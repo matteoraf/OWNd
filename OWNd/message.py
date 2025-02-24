@@ -1750,6 +1750,14 @@ class OWNAutomationCommand(OWNCommand):
         return message
 
     @classmethod
+    def dimension(cls, where):
+        message = cls(f"*#2*{where}*10##")
+        message._human_readable_log = (
+            f"Requesting shutter {message._where}{message._interface_log_text} dimension."
+        )
+        return message
+
+    @classmethod
     def raise_shutter(cls, where):
         message = cls(f"*2*1*{where}##")
         message._human_readable_log = (
